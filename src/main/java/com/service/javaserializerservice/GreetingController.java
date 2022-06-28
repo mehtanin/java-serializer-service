@@ -30,11 +30,11 @@ public class GreetingController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
-    @Value("${inputEnvironment.path}")
+    @Value("${file.upload-dir}")
     private String inputEnvPath;
-    @Value("${outputEnvironment.path}")
+    @Value("${file.save-dir}")
     private String outputEnvPath;
-    @Value("${additionalFile.path}")
+    @Value("${file.additional-dir}")
     private String additionalEnvPath;
 
     @GetMapping("/greeting")
@@ -72,10 +72,6 @@ public class GreetingController {
         Path pdfPath = Paths.get(additionalEnvPath + "/test.pdf");
         byte [] pdfData = Files.readAllBytes(pdfPath);
         InMemoryFile inMemoryFile = new InMemoryFile(pdfData, "/aasx/OperatingManual.pdf");
-        fileList.add(inMemoryFile);
-        pdfPath = Paths.get(additionalEnvPath + "/pascalsFile.pdf");
-        pdfData = Files.readAllBytes(pdfPath);
-        inMemoryFile = new InMemoryFile(pdfData, "/aasx/PascalsFile.pdf");
         fileList.add(inMemoryFile);
 
         File outputFile = new File(outputEnvPath + "/aasxFromRdf.aasx");

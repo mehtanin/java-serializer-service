@@ -34,14 +34,10 @@ public class AasxSerializerService {
         byte [] pdfData = Files.readAllBytes(pdfPath);
         InMemoryFile inMemoryFile = new InMemoryFile(pdfData, "/aasx/OperatingManual.pdf");
         fileList.add(inMemoryFile);
-        pdfPath = Paths.get(additionalEnvPath + "/pascalsFile.pdf");
-        pdfData = Files.readAllBytes(pdfPath);
-        inMemoryFile = new InMemoryFile(pdfData, "/aasx/PascalsFile.pdf");
-        fileList.add(inMemoryFile);
 
         File outputFile = new File(outputEnvPath + "/AasxFromRdf.aasx");
         new AASXSerializer().write(env, fileList, new FileOutputStream(outputFile));
-        return "Success!";
+        return outputFile.getParent() + "/" + outputFile.getName();
     }
 
     public String convertAasxToRdf(String inputEnvPath, String outputEnvPath, String fileName) throws Exception {
@@ -57,7 +53,7 @@ public class AasxSerializerService {
         String envToRdfString = new Serializer().serialize(env, RDFLanguages.TURTLE);
         Files.write(storagePath, envToRdfString.getBytes(StandardCharsets.UTF_8));
 
-        return "Success!";
+        return storagePath.getParent().toString() + "/" + storagePath.getFileName().toString();
     }
 
     public static String readFileAsString(String file)throws Exception

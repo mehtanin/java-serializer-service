@@ -1,3 +1,10 @@
-/home/mrashikh/Workspace/java-generator-service/src/main/java/com/service/javageneratorservice/GreetingController.java
-/home/mrashikh/Workspace/java-generator-service/src/main/java/com/service/javageneratorservice/JavaGeneratorServiceApplication.java
-/home/mrashikh/Workspace/java-generator-service/src/main/java/com/service/javageneratorservice/Greeting.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/payload/UploadFileResponse.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/exception/MyFileNotFoundException.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/GreetingController.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/controller/FileController.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/Greeting.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/JavaGeneratorServiceApplication.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/service/AasxSerializerService.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/service/FileStorageService.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/exception/FileStorageException.java
+/home/mrashikh/Workspace/java-serializer-service/src/main/java/com/service/javaserializerservice/property/FileStorageProperties.java

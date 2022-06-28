@@ -21,12 +21,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 public class FileController {
-    @Value("${inputEnvironment.path}")
+    @Value("${file.upload-dir}")
     private String inputEnvPath;
-    @Value("${outputEnvironment.path}")
+    @Value("${file.save-dir}")
     private String outputEnvPath;
-    @Value("${additionalFile.path}")
+    @Value("${file.additional-dir}")
     private String additionalEnvPath;
     @Autowired
     private FileStorageService fileStorageService;
@@ -36,7 +37,7 @@ public class FileController {
         String fileName = fileStorageService.storeFile(file);
         String returnValue = new AasxSerializerService().convertRdfToAasx(inputEnvPath, additionalEnvPath, outputEnvPath, fileName);
         System.out.print(returnValue);
-        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded!");
+        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved: " + returnValue);
     }
 
     @PostMapping(path = "/uploadFileAasx", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -44,7 +45,7 @@ public class FileController {
         String fileName = fileStorageService.storeFile(file);
         String returnValue = new AasxSerializerService().convertAasxToRdf(inputEnvPath, outputEnvPath, fileName);
         System.out.print(returnValue);
-        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded!");
+        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved: " + returnValue);
     }
 
     @PostMapping("/uploadMultipleFiles")

@@ -1,3 +1,10 @@
-com/service/javageneratorservice/Greeting.class
-com/service/javageneratorservice/JavaGeneratorServiceApplication.class
-com/service/javageneratorservice/GreetingController.class
+com/service/javaserializerservice/service/AasxSerializerService.class
+com/service/javaserializerservice/exception/FileStorageException.class
+com/service/javaserializerservice/GreetingController.class
+com/service/javaserializerservice/service/FileStorageService.class
+com/service/javaserializerservice/property/FileStorageProperties.class
+com/service/javaserializerservice/payload/UploadFileResponse.class
+com/service/javaserializerservice/JavaGeneratorServiceApplication.class
+com/service/javaserializerservice/Greeting.class
+com/service/javaserializerservice/controller/FileController.class
+com/service/javaserializerservice/exception/MyFileNotFoundException.class
