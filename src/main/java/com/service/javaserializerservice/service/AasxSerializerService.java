@@ -35,7 +35,7 @@ public class AasxSerializerService {
         InMemoryFile inMemoryFile = new InMemoryFile(pdfData, "/aasx/OperatingManual.pdf");
         fileList.add(inMemoryFile);
 
-        File outputFile = new File(outputEnvPath + "/AasxFromRdf.aasx");
+        File outputFile = new File(outputEnvPath + "/aasenvironment.aasx");
         new AASXSerializer().write(env, fileList, new FileOutputStream(outputFile));
         return outputFile.getParent() + "/" + outputFile.getName();
     }
@@ -49,7 +49,23 @@ public class AasxSerializerService {
         System.out.println("#### AAS Environment: " + inputFile);
         aasList.forEach(aas -> System.out.println("Environment contains AAS: " + aas.getIdShort() + " Submodel: " + aas.getSubmodels().stream().count()));
 
-        Path storagePath = Paths.get(outputEnvPath + "/RdfFromAasx.ttl");
+        Path storagePath = Paths.get(outputEnvPath + "/aasenvironment.ttl");
+        String envToRdfString = new Serializer().serialize(env, RDFLanguages.TURTLE);
+        Files.write(storagePath, envToRdfString.getBytes(StandardCharsets.UTF_8));
+
+        return storagePath.getParent().toString() + "/" + storagePath.getFileName().toString();
+    }
+
+    public String convertAasxToRdfRepoPhase(String inputPath, String outputPath, String fileName) throws Exception {
+        File inputFile = new File(inputPath + "/" + fileName);
+        InputStream in = new FileInputStream(inputFile);
+        AASXDeserializer deserializer = new AASXDeserializer(in);
+        AssetAdministrationShellEnvironment env = deserializer.read();
+        List<AssetAdministrationShell> aasList = env.getAssetAdministrationShells();
+        System.out.println("#### AAS Environment: " + inputFile);
+        aasList.forEach(aas -> System.out.println("Environment contains AAS: " + aas.getIdShort() + " Submodel: " + aas.getSubmodels().stream().count()));
+
+        Path storagePath = Paths.get(outputPath + fileName.replace(".aasx", ".ttl"));
         String envToRdfString = new Serializer().serialize(env, RDFLanguages.TURTLE);
         Files.write(storagePath, envToRdfString.getBytes(StandardCharsets.UTF_8));
 

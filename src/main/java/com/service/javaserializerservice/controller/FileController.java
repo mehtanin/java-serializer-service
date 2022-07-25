@@ -48,6 +48,15 @@ public class FileController {
         return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved: " + returnValue);
     }
 
+    @PostMapping(path = "/ProcessAasxFile", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.ALL_VALUE})
+    public ResponseEntity<String>  ProcessAasxFile(@RequestPart("file") MultipartFile file, @RequestParam("inputLocation") String inputLocation) throws Exception {
+        String fileName = fileStorageService.storeFile(file);
+        String outputLocation = inputLocation + "/ConvertedAasxOnto/";
+        String returnValue = new AasxSerializerService().convertAasxToRdfRepoPhase(inputLocation, outputLocation, fileName);
+        System.out.print(returnValue);
+        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved: " + returnValue);
+    }
+
     @PostMapping("/uploadMultipleFiles")
     public ResponseEntity<String> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
 //        return Arrays.asList(files)
