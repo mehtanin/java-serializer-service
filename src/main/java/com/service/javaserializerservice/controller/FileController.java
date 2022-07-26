@@ -37,7 +37,7 @@ public class FileController {
         String fileName = fileStorageService.storeFile(file);
         String returnValue = new AasxSerializerService().convertRdfToAasx(inputEnvPath, additionalEnvPath, outputEnvPath, fileName);
         System.out.print(returnValue);
-        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved: " + returnValue);
+        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved as: " + returnValue);
     }
 
     @PostMapping(path = "/uploadFileAasx", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -45,7 +45,7 @@ public class FileController {
         String fileName = fileStorageService.storeFile(file);
         String returnValue = new AasxSerializerService().convertAasxToRdf(inputEnvPath, outputEnvPath, fileName);
         System.out.print(returnValue);
-        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved: " + returnValue);
+        return ResponseEntity.status(HttpStatus.OK).body("Success: " + fileName + " uploaded. \nSaved as: " + returnValue);
     }
 
     @PostMapping(path = "/ProcessAasxFile", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.ALL_VALUE})

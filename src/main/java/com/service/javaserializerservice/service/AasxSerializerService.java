@@ -37,7 +37,7 @@ public class AasxSerializerService {
 
         File outputFile = new File(outputEnvPath + "/aasenvironment.aasx");
         new AASXSerializer().write(env, fileList, new FileOutputStream(outputFile));
-        return outputFile.getParent() + "/" + outputFile.getName();
+        return outputFile.getName();
     }
 
     public String convertAasxToRdf(String inputEnvPath, String outputEnvPath, String fileName) throws Exception {
@@ -53,7 +53,7 @@ public class AasxSerializerService {
         String envToRdfString = new Serializer().serialize(env, RDFLanguages.TURTLE);
         Files.write(storagePath, envToRdfString.getBytes(StandardCharsets.UTF_8));
 
-        return storagePath.getParent().toString() + "/" + storagePath.getFileName().toString();
+        return storagePath.getFileName().toString();
     }
 
     public String convertAasxToRdfRepoPhase(String inputPath, String outputPath, String fileName) throws Exception {

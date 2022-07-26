@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.service.javaserializerservice.JavaGeneratorServiceApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.399 s - in com.service.javaserializerservice.JavaGeneratorServiceApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.529 s - in com.service.javaserializerservice.JavaGeneratorServiceApplicationTests
